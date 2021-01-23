@@ -14,6 +14,7 @@ Opening the terminal
 ### DAY-2(Floor plan)
 
 **Steps involved in Floorplanning**
+
 1.Define width and height of core and die\
 2.Define locations of preplaced cells\
 3.Surround Preplaced cells with decoupling capacitors\
@@ -21,6 +22,7 @@ Opening the terminal
 5.Pin Placement\
 
 **Notes**
+
 Netlist-Defines the connectivity of gates\
 Utilization Faztor=Area occupied by netlist/Area of the core\
 Aspect Ratio=height/width\
