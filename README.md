@@ -30,6 +30,7 @@ The routing wires consists of parasetic resistance which leads to voltage drop a
 Frontend team decides **netlist connectivity** and backened team decides **pin placement**.\
 Mostly clock paths are of bigger width comparatevely as they drive most of the cells on core like flipflops ,so it ensures least resistance path.\
 Standard Cell palcement happens in placement stage not in floorplan\
-Buffers are used in between tracks to replenish the strength of the signal **(signal integrity)**.
+Buffers are used in between tracks to replenish the strength of the signal **(signal integrity)**.\
+The supply grids are always on the top metal layers as it provides least resistance path. Hence it ensures no losses. You can connect lower metal  layers and top metal layers using contacts
 
 
