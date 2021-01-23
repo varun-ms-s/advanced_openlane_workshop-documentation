@@ -18,6 +18,8 @@ Netlist-Defines the connectivity of gates\
 Utilization Faztor=Area occupied by netlist/Area of the core\
 Aspect Ratio=height/width
 
-Next Step-Define locations of preplaced cells
+Next Step-Define locations of preplaced cells\
+The arrangement of IPs in a chip is called floor planning\
+The routing wires consists of parasetic resistance which leads to voltage drop and we could not reach rail to rail voltage at output.Decoupling capacitors are used to replenish the charge in a preplaced cell during transition so that we reach rail volatage of VDD./
 
 
