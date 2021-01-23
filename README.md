@@ -19,7 +19,7 @@ Opening the terminal
 2.Define locations of preplaced cells\
 3.Surround Preplaced cells with decoupling capacitors\
 4.Power Planning\
-5.Pin Placement\
+5.Pin Placement
 
 **Notes**
 
