@@ -14,8 +14,8 @@ Its a workshop conducted by VSD team
 Width and height of core and die\
 Netlist-Defines the connectivity of gates\
 Utilization Faztor=Area occupied by netlist/Area of the core\
-Aspect Ratio=height/width\
+Aspect Ratio=height/width
 
-Next Step-Define locations of preplaced cells\
+Next Step-Define locations of preplaced cells
 
 
