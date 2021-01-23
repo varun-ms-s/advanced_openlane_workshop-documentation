@@ -3,8 +3,7 @@ Its a workshop conducted by VSD team
 **DAY-1**
 
 Opening the terminal/
-day_1/Terminal.PNG
-
+![](day_1/Terminal.PNG)
 
 
 
