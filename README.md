@@ -11,7 +11,7 @@ Opening the terminal
 
 
 
-### DAY-2(Floor plan)
+##### DAY-2(Floor plan)
 
 Width and height of core and die\
 Netlist-Defines the connectivity of gates\
