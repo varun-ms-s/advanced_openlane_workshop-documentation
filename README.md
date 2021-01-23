@@ -23,13 +23,13 @@ Opening the terminal
 
 **Notes**
 
-Netlist-Defines the connectivity of gates\
-Utilization Faztor=Area occupied by netlist/Area of the core\
-Aspect Ratio=height/width\
-The routing wires consists of parasetic resistance which leads to voltage drop and we could not reach rail to rail voltage at output.Decoupling capacitors are used to replenish the charge in a preplaced cell during transition so that we reach rail volatage of VDD.\
-Frontend team decides netlist connectivity and backened team decides pin placement.\
+**Netlist**-Defines the connectivity of gates\
+**Utilization Faztor**=Area occupied by netlist/Area of the core\
+**Aspect Ratio**=height/width\
+The routing wires consists of parasetic resistance which leads to voltage drop and we could not reach rail to rail voltage at output.**Decoupling capacitors** are used to replenish the charge in a preplaced cell during transition so that we reach rail volatage of VDD.\
+Frontend team decides **netlist connectivity** and backened team decides **pin placement**.\
 Mostly clock paths are of bigger width comparatevely as they drive most of the cells on core like flipflops ,so it ensures least resistance path.\
 Standard Cell palcement happens in placement stage not in floorplan\
-Buffers are used in between tracks to replenish the strength of the signal.\
+Buffers are used in between tracks to replenish the strength of the signal **(signal integrity)**.
 
 
