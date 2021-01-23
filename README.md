@@ -1,6 +1,6 @@
 # advanced_openlane_workshop-documentation
 Its a workshop conducted by VSD team
-**DAY-1
+**DAY-1**
 
 
 
@@ -9,9 +9,9 @@ Its a workshop conducted by VSD team
 
 
 
-**DAY-2(Floor plan)
+**DAY-2(Floor plan)**
 
-> Width and height of core and die
+Width and height of core and die
 Netlist-Defines the connectivity of gates
 Utilization Faztor=Area occupied by netlist/Area of the core
 Aspect Ratio=height/width
