@@ -130,7 +130,7 @@ The supply grids are always on the top metal layers as it provides least resista
 
 1.Go into openlane_flow and follow steps of day.Now we can name our run instance with a user defined name.Here i name it trial_run1 using keyword -tag.
 
-[]!(day_2/prep.PNG)
+[]!(/day_2/prep.PNG)
 
 
 
