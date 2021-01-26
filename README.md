@@ -20,4 +20,7 @@ This was a 5-day workshop which was extensively conducted using opensource EDA t
  
  ![](day_1/Desisgns_files.PNG)
 
+**Openlane flow entry**
+
+> Desktop/work/tools/openlane_working_directory/openlane_flow
 
