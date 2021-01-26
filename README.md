@@ -130,8 +130,20 @@ The supply grids are always on the top metal layers as it provides least resista
 
 1.Go into openlane_flow and follow steps of day.Now we can name our run instance with a user defined name.Here i name it trial_run1 using keyword -tag.
 
-[]!(/day_2/prep.PNG)
+![](/day_2/prep.PNG)
 
+LEFs and technology layer is merged to form merged layer.
+
+![](/day_2/pad_lef.PNG)
+
+To open existing run instance.
+
+![](/day_2/opening_existing_run.PNG)
+
+
+-overwrite keyword can be used to empty a previously created run instance.
+
+![](/day_2/Overwrite.PNG)
 
 
 
