@@ -179,15 +179,32 @@ rty-> top left y coordinate
 
 To view floorplan def file we need technolgy file sky130A and merged.lef file\
 sky130A is found in <\
-merged.lef is found in <\
+merged.lef is found in <
 
 copy both technology and lef file into directory where floorplan is found < \
-Then got to floorplan directory in results  through terminal\
-type
+![](/day_2/got.PNG)
+
+Then go to floorplan directory in results  through terminal\
+Type
 magic -T sky130A lef read merged.lef def read picorv32a.floorplan.def\
-you will get magic layout\
+you will get magic layout
 
 ![](/day_2/floorplan_magic.PNG)
+
+Config.tcl file is modified to set below parameters of floorplan \
+FP_IO_VMETAL->4 (metal4)\
+FP_IO_HMETAL->3 (metal3)\
+FP_IO_MODE-> 0 (Pins are equidistant)
+
+Here you can see pins are equidistant
+![](/day_2/pins_equadistant.PNG)
+
+Decoupling capacitors placed in floorplan 
+![](/day_2/decapacitors_magic.PNG)
+
+
+
+
 
 
 
