@@ -91,7 +91,7 @@ In reports directory of the your run instance you can find synthesis directory.H
 ![](day_1/Sunthesis_folder_reports.PNG) 
 
 **PDKs**
-In PDK folder of oepnlane_working_directory you will find three folders. \
+In PDK folder of openlane_working_directory you will find three folders. \
 Skywater PDK-This is PDK which contaions all standard cells,spice files,library files etc\
 Open PDK-This basically consists of scripts which sorts the files in skywater PDK according to particular open source EDA tool.\
 SKY130 - Open PDK script creates specific folders for each open source eda tool and places those files from skywater PDK after sorting.\
@@ -144,6 +144,41 @@ To open existing run instance.
 -overwrite keyword can be used to empty a previously created run instance.
 
 ![](/day_2/Overwrite.PNG)
+
+echo command can be used to know the values to which openlane variables are set.
+
+![](/day_2/ECHO_CLK_PERIOD.PNG)
+
+Core_utilization set to 0.65 in config.tcl
+![](/day_2/setting_core_utilization.PNG)!
+
+run_floorplan command used to start floorplan
+
+![](/day_2/run_floor.PNG)
+
+floorplan complete
+
+![](/day_2/floorplan_done.PNG)
+
+Floorplan def file is stored under floorplan director in results
+
+
+![](/day_2/def_floorplan.PNG)
+
+
+Inside floorplan def file
+
+![](/day_2/def_file_exam.PNG)
+
+those cooardinates are of the form below\
+(lbx lby rtx rty)\
+lbx-> bottom left x coordinate\
+lby-> bottom left y coordinate\
+rtx-> top right x cooardinate\
+rty-> top left y coordinate
+
+
+
 
 
 
