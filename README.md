@@ -14,7 +14,8 @@ This was a 5-day workshop which was extensively conducted using opensource EDA t
 
 **Design directory**
 
-  Design directory stores all the design files
+  Design directory stores all the design files\
+  The input files which u want to pass into openlane has to be stored in thos directory\
 
  ![](day_1/Terminal.PNG)
  
@@ -32,9 +33,9 @@ package require openlane 0.9
 ![](day_1/day1_prep_pico.PNG)
 
 4.Pass your design into openflow\
-prep -design picorv32a -tag trial_run1\
--design ->pass the design folder for your input files to openlane\
--tag -> Save your run with a well_defined name of your choice\
+prep -design picorv32a 
+-design ->pass the design folder name for your input files to openlane\
+
 
 ![](day_1/day1_prep_pico_complete.PNG)
 
