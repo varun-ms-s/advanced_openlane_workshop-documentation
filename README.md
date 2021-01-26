@@ -34,7 +34,7 @@ package require openlane 0.9
 
 4.Pass your design into openflow\
 prep -design picorv32a \
--design ->pass the design folder name where you stored your input files to openlane\
+-design ->pass the design folder name where you stored your input files to openlane
 
 
 
@@ -45,7 +45,7 @@ Now openlane basically merges the lef file and technology file and forms a merge
 5.We are passing picorv32a design into openlane.We can find picorv32a folder in design directory.\
 There the verilog input files are stored in src folder.\
 Config.tcl is used to set all variables with desired values for openlane flow.\
-runs directory stores all the  run instances with a tag name is specified run by the user on openlane for design.By default run instance name is particular time and date of run.\
+Runs directory stores all the  run instances.By default run instance name is particular time and date of run.
 
 ![](day_1/files_in_picorv_veri.PNG)
 
@@ -66,6 +66,8 @@ A yosis reprt will be generated which contains all information of cells used in 
 The new synthesis file will be stored in <designs/picorv32a/runs/"run_file_name"/results/synthesis>
 
 ![](day_1/runs1.PNG)
+
+
 
 
 
