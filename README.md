@@ -15,6 +15,6 @@ This was a 5-day workshop which was extensively conducted using opensource EDA t
 **Design directory**
   Design directory stores all the design files
 
- ![](day_1/design_directory.PNG)
+ ![](day_1/Design_directory.PNG)
 
 
