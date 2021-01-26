@@ -12,6 +12,12 @@ This was a 5-day workshop which was extensively conducted using opensource EDA t
 
 ## DAY-1
 
+
+### TASK
+To learn about skywater PDK and implement synthesis stage in openlane.
+
+### LAB
+
 **Design directory**
 
   Design directory stores all the design files\
@@ -84,13 +90,48 @@ In reports directory of the your run instance you can find synthesis directory.H
 
 ![](day_1/Sunthesis_folder_reports.PNG) 
 
-** PDKs **
+**PDKs**
 In PDK folder of oepnlane_working_directory you will find three folders. \
 Skywater PDK-This is PDK which contaions all standard cells,spice files,library files etc\
 Open PDK-This basically consists of scripts which sorts the files in skywater PDK according to particular open source EDA tool.\
 SKY130 - Open PDK script creates specific folders for each open source eda tool and places those files from skywater PDK after sorting.\
 .
 ![](day_1/pdks_1.PNG)
+
+
+
+## Day-2
+
+
+### TASK
+To implement Floorplan in Openlane and understand the steps to lay good floorplan
+
+**Steps involved in Floorplanning**
+
+1.Define width and height of core and die\
+2.Define locations of preplaced cells\
+3.Surround Preplaced cells with decoupling capacitors\
+4.Power Planning\
+5.Pin Placement
+
+**Netlist**-Defines the connectivity of gates\
+**Utilization Faztor**=Area occupied by netlist/Area of the core\
+**Aspect Ratio**=height/width\
+
+### NOTES
+The routing wires consists of parasetic resistance which leads to voltage drop and we could not reach rail to rail voltage at output.**Decoupling capacitors** are used to replenish the charge in a preplaced cell during transition so that we reach rail volatage of VDD.\
+Frontend team decides **netlist connectivity** and backened team decides **pin placement**.\
+Mostly clock paths are of bigger width comparatevely as they drive most of the cells on core like flipflops ,so it ensures least resistance path.\
+Standard Cell palcement happens in placement stage not in floorplan\
+Buffers are used in between tracks to replenish the strength of the signal **(signal integrity)**.\
+The supply grids are always on the top metal layers as it provides least resistance path. Hence it ensures no losses. You can connect lower metal  layers and top metal layers using vias.
+
+### LAB
+
+1.Go into openlane_flow and follow steps of day.Now we can name our run instance with a user defined name.Here i name it trial_run1 using keyword -tag.
+
+[]!(day_2/prep.PNG)
+
 
 
 
