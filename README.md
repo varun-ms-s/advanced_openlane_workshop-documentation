@@ -80,7 +80,9 @@ The new synthesis file will be stored in <designs/picorv32a/runs/"run_file_name"
 Inside the run instance we find one more config.tcl.This file contains all variables which were set by the user.
 ![](day_1/config_2.PNG)
 
+In reports directory of the your run instance you can find synthesis directory.Here all reports generated during synthesis stage are stored.
 
+![](day_1/Sunthesis_folder_reports.PNG)
 
 
 
