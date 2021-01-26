@@ -22,5 +22,17 @@ This was a 5-day workshop which was extensively conducted using opensource EDA t
 
 **Openlane flow entry**
 
-> Desktop/work/tools/openlane_working_directory/openlane_flow
+1.Go to openlane flow directory\
+< Desktop/work/tools/openlane_working_directory/openlane_flow>\
+2.Type\
+<./flow.tcl -interactive>\
+3.Now you will enter to open lane flow and type\
+<package require openlane 0.9>\
+
+
+
+
+
+
+
 
