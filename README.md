@@ -83,8 +83,14 @@ Inside the run instance we find one more config.tcl.This file contains all varia
 In reports directory of the your run instance you can find synthesis directory.Here all reports generated during synthesis stage are stored.
 
 ![](day_1/Sunthesis_folder_reports.PNG) 
-.
 
+** PDKs **
+In PDK folder of oepnlane_working_directory you will find three folders. \
+Skywater PDK-This is PDK which contaions all standard cells,spice files,library files etc\
+Open PDK-This basically consists of scripts which sorts the files in skywater PDK according to particular open source EDA tool.\
+SKY130 - Open PDK script creates specific folders for each open source eda tool and places those files from skywater PDK after sorting.\
+.
+![](day_1/pdks_1.PNG)
 
 
 
