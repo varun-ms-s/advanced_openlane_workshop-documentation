@@ -197,20 +197,63 @@ FP_IO_HMETAL->3 (metal3)\
 FP_IO_MODE-> 1 (Pins are equidistant)
 
 Here you can see pins are equidistant
+
 ![](/day_2/pins_equadistant.PNG)
 
 if FP_IO_MODE-> 2 (pins accumulate in one corner)
+
 ![](/day_2/fp_io_mode_2.PNG)
 
 
 Decoupling capacitors placed in floorplan 
+
 ![](/day_2/decapacitors_magic.PNG)
 
 Tapcells
+
 ![](/day_2/tapcell.PNG)
 
 We can find all standard cells obtained after synthesis are accumulated in one corner of main core.
+
 ![](/day_2/standard_cells.PNG)
+
+
+Now to start placement type command\
+run_placement
+
+![](/day_2/placement_2.PNG)
+
+While placement going on we come across two words:-HPWL and OVFL\
+HPWL-Half perimeter wire length is just a model to approximate the wire lengths inorder to use it as parameter to optimise placement\
+OVFL-This is overflow parameter which should decrease as placement optimization takes place\
+
+![](/day_2/hpwl_opt.PNG)
+
+Final placement pass 
+
+![](/day_2/placement_pass.PNG)
+
+Placement def file is stored in following <\
+Copy SKY130A tech file and merged.lef to that folder where u find placement def\
+Through terminal go to the directory of placement def file\
+Type \
+magic -T sky130A lef read merged.lef def read picorv32.placement.def\
+
+Placement
+
+![](/day_2/standard_cells_placement_1.PNG)
+
+Placement at 0.8 target density (which i set using COMMAND <set ::env(PL_TARGET_DENSITY) 0.8>
+
+![](/day_2/0.8_density.PNG)
+
+Placement at 0.4 target density (which i set using COMMAND <set ::env(PL_TARGET_DENSITY) 0.4>
+
+![](/day_2/0.4_targ_den.PNG)
+
+
+
+
 
 
 
