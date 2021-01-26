@@ -177,6 +177,20 @@ lby-> bottom left y coordinate\
 rtx-> top right x cooardinate\
 rty-> top left y coordinate
 
+To view floorplan def file we need technolgy file sky130A and merged.lef file\
+sky130A is found in <\
+merged.lef is found in <\
+
+copy both technology and lef file into directory where floorplan is found < \
+Then got to floorplan directory in results  through terminal\
+type
+magic -T sky130A lef read merged.lef def read picorv32a.floorplan.def\
+you will get magic layout\
+
+![](/day_2/floorplan_magic.PNG)
+
+
+
 
 
 
