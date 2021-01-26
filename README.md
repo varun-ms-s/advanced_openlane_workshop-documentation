@@ -194,13 +194,23 @@ you will get magic layout
 Config.tcl file is modified to set below parameters of floorplan \
 FP_IO_VMETAL->4 (metal4)\
 FP_IO_HMETAL->3 (metal3)\
-FP_IO_MODE-> 0 (Pins are equidistant)
+FP_IO_MODE-> 1 (Pins are equidistant)
 
 Here you can see pins are equidistant
 ![](/day_2/pins_equadistant.PNG)
 
+if FP_IO_MODE-> 2 (pins accumulate in one corner)
+![](/day_2/fp_io_mode_2.PNG)
+
+
 Decoupling capacitors placed in floorplan 
 ![](/day_2/decapacitors_magic.PNG)
+
+Tapcells
+![](/day_2/tapcell.PNG)
+
+We can find all standard cells obtained after synthesis are accumulated in one corner of main core.
+![](/day_2/standard_cells.PNG)
 
 
 
