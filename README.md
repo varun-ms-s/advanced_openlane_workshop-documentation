@@ -82,7 +82,8 @@ Inside the run instance we find one more config.tcl.This file contains all varia
 
 In reports directory of the your run instance you can find synthesis directory.Here all reports generated during synthesis stage are stored.
 
-![](day_1/Sunthesis_folder_reports.PNG)
+![](day_1/Sunthesis_folder_reports.PNG) 
+.
 
 
 
