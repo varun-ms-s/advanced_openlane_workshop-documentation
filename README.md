@@ -14,6 +14,6 @@ This was a 5-day workshop which was extensively conducted using opensource EDA t
 
 Design directory
 
- ![]((day_1/Terminal.PNG)
+ ![](day_1/Terminal.PNG)
 
 
