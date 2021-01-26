@@ -33,11 +33,26 @@ package require openlane 0.9
 ![](day_1/day1_prep_pico.PNG)
 
 4.Pass your design into openflow\
-prep -design picorv32a 
--design ->pass the design folder name for your input files to openlane\
+prep -design picorv32a \
+-design ->pass the design folder name where you stored your input files to openlane\
+
+
 
 
 ![](day_1/day1_prep_pico_complete.PNG)
+Now openlane basically merges the lef file and technology file and forms a merged file called merged.lef\
+
+5.We are passing picorv32a design into openlane.We can find picorv32a folder in design directory.\
+There the verilog input file is stored in src folder.Config.tcl is used to set all variables with desired values for openlane flow
+
+![]day_1/files_in_picorv_veri.PNG
+
+
+
+
+
+
+
 
 
 
