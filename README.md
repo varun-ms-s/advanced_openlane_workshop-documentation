@@ -202,7 +202,7 @@ Here you can see pins are equidistant
 
 if FP_IO_MODE-> 2 (pins accumulate in one corner)
 
-![](/day_2/fp_io_mode_2.PNG)
+![](day_2/fp_io_mode_2.png)
 
 
 Decoupling capacitors placed in floorplan 
