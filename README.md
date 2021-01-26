@@ -23,6 +23,8 @@ This was a 5-day workshop which was extensively conducted using opensource EDA t
 
 **Openlane flow entry**
 
+![](day_1/openlane_in_1.PNG)
+
 1.Go to openlane flow directory\
  Desktop/work/tools/openlane_working_directory/openlane_flow\
 2.Type\
@@ -65,7 +67,7 @@ A yosis reprt will be generated which contains all information of cells used in 
 
 The new synthesis file will be stored in <designs/picorv32a/runs/"run_file_name"/results/synthesis>
 
-![](day_1/runs1.PNG)
+![](day_1/runs_1.PNG)
 
 
 
