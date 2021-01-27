@@ -34,14 +34,14 @@ To learn about skywater PDK and implement synthesis stage in openlane.
 1.Go to openlane flow directory\
  Desktop/work/tools/openlane_working_directory/openlane_flow\
 2.Type\
-./flow.tcl -interactive\
+`./flow.tcl -interactive`\
 3.Now you will enter to open lane flow and type\
-package require openlane 0.9
+`package require openlane 0.9`
 
 ![](day_1/day1_prep_pico.PNG)
 
 4.Pass your design into openflow\
-prep -design picorv32a \
+ `prep -design picorv32a` \
 -design ->pass the design folder name where you stored your input files to openlane
 
 
