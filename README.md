@@ -329,7 +329,7 @@ Open the simulation file in ngspice
 
 ![](/day_3/ngspice_1.PNG)
 
-![](/day_3/cell_fall delay.PNG)
+![](/day_3/cell_falldelay.PNG)
 
 ![](/day_3/cell_fall_delay_cal.PNG)
 
@@ -349,7 +349,7 @@ Fall trsnsition 80% of vdd=2.6V
 
 Fall Transition=2.20ns - 2.16ns =0.04ns
 
-![](/day_3/fall transitionlk.PNG)
+![](/day_3/falltransitionlk.PNG)
 
 
 
