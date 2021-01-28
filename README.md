@@ -161,7 +161,7 @@ floorplan complete
 
 ![](/day_2/floorplan_done.PNG)
 
-Floorplan def file is stored under floorplan director in results
+Floorplan def file is stored under floorplan directory in results
 
 
 ![](/day_2/def_floorplan.PNG)
@@ -234,11 +234,11 @@ Final placement pass
 
 ![](/day_2/placement_pass.PNG)
 
-Placement def file is stored in following <\
+Placement def file is stored in following `<\designs\picorv32a\runs\trail_run1\results\placement>`\
 Copy SKY130A tech file and merged.lef to that folder where u find placement def\
 Through terminal go to the directory of placement def file\
 Type \
-magic -T sky130A lef read merged.lef def read picorv32.placement.def\
+`magic -T sky130A lef read merged.lef def read picorv32.placement.def`\
 
 Placement
 
@@ -251,6 +251,133 @@ Placement at 0.8 target density (which i set using COMMAND `<set ::env(PL_TARGET
 Placement at 0.4 target density (which i set using COMMAND `<set ::env(PL_TARGET_DENSITY) 0.4`>
 
 ![](/day_2/0.4_targ_den.PNG)
+
+
+## DAY-3
+
+### TASK
+To examine custom inverter cell layout of sky130 node in magic.To extract spice file and finally simulate in ngspice to find cell delay and transition times.
+
+### NOTES
+
+
+
+### LAB
+
+Clone the repository shown below in figure
+
+![](/day_3/vsd_clone.PNG)
+
+In the repository downloaded we find a sky130_vsdinv.mag file.Open it in magic using sky130.tech technology file.\
+`magic -tech sky130.tech sky130_vsdinv.mag`
+
+![](/day_3/sky130_mag_label.PNG)
+
+
+1->Nwell\
+2->Metal-1(VDD)\
+3->Locali\
+4->locali and nsubstrate contact\
+5->Metal-1 and locali contact\
+6->Polysilicon\
+7->Pdiffusion\
+8->Metal-1(GND)\
+9->Ndiffusion\
+10->locali and Ndiffusion contact\
+11->locali and Pdiffusion contact\
+12->polysilicon and locali contact
+
+
+![](/day_3/exttospice.PNG)
+
+To extract spice file from the layout\
+Type below commands as shown in figure in TCL/TK window of magic\
+`extraxt all`-This commands extraxts the netlist in a different format as compared to spice netlist\
+`exttospice`-In order to make extracted netlist compatible with spice we us this command\
+`cthresh = 0` - Selects option to include all lumped capacitance greater than zero farad in netlist
+
+![](/day_3/spice.PNG)
+
+Files in vsd folder after extraction from magic.
+
+![](/day_3/filesafter.PNG)
+
+open the sky130_inv_parasetics.spice file in leafpad
+
+![](/day_3/spice.PNG)
+
+
+
+Here pshort.lib and nshort.lib are model files for mosfets of sky130 node.\
+.trans command is inserted to indicate transient response\
+VPWR ->DC source\
+A-> pulse
+
+![](/day_3/SPICE_SIMU.PNG)
+
+
+if Cthresh=0 option not selected then u can see the extracted netlist will not have lumped capacitance included.
+
+![](/day_3/noparaspice.PNG)
+
+
+As part of exercise we needed to find cell fall delay and fall transition.
+
+Cell fall delay-difference in time instances at which input reaches 50% of vdd from 0 and output reaches 50% of  vdd from vdd.\
+Open the simulation file in ngspice
+`ngspice sky130_inv_parasetics.spice`
+
+![](/day_3/ngspice_1.PNG)
+
+![](/day_3/cell_fall delay.PNG)
+
+![](/day_3/cell_fall_delay_cal.PNG)
+
+Cell fall delay=2.18ns - 2.15ns = 0.03ns
+
+Fall transition=difference in time instances during falling of output from 80% of vdd to 20%vdd
+
+![](/day_3/fall.PNG)
+
+Fall transition 20% of vdd=0.65V
+
+![](/day_3/fall_transition_20.PNG)
+
+Fall trsnsition 80% of vdd=2.6V
+
+![](/day_3/fall_transition_80.PNG)
+
+Fall Transition=2.20ns - 2.16ns =0.04ns
+
+![](/day_3/fall transitionlk.PNG)
+
+
+
+
+## DAY-4
+
+
+### TASK-4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
