@@ -219,7 +219,7 @@ We can find all standard cells obtained after synthesis are accumulated in one c
 
 
 Now to start placement type command\
-run_placement
+`run_placement`
 
 ![](/day_2/placement_2.PNG)
 
