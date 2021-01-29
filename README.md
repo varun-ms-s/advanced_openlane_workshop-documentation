@@ -361,6 +361,330 @@ Fall Transition=2.20ns - 2.16ns =0.04ns
 
 ### TASK-4
 
+To explore inverter layout in magic.Define the ports in magic and export lef file.Insert the custom lef file in our picorv32 design.Do static timing analysis and try to reduce resulting negative slack to zero by buffering and increasing the size of cells.Constructing clock tree using triton cts tool of openroad and do final sta analysis on modified synthesis file after clock tree synthesis.
+
+### Notes
+
+
+Input and output port should lie on the intersection of vertical and horizotal tracks\
+The width of standard cell should be in odd multiples of horizontal track pitch\
+The height of standard cell should be in odd multiples of verticle pitch\
+Ensurung the port at horizonral and vertical track ensure that route can reach port\
+cts done for max and min but should be done for typical as cts is typical\
+we always want skew values to 10percent of timeperiod of clk\
+inorder to meet skew one of the buffers are chosen ,starting from small size buffer\
+
+
+### LAB
+
+Pitches and origin of various metals in sky130 which can be found in track info file
+
+![](/day_4/metal_pitch_textl.PNG)
+
+
+To draw grid of origin and pitch of locali metal layer inorder to find whether the coustom inverter cell layout follows standard cell rules to be accuraletly placed by placement tool
+
+![](/day_4/grid_li_com.PNG)
+
+
+Here you can find the grid is intersecting with the ports perfectly which is indicating that standard cell ports are lie on intersection of vertical and horizontal tracks
+
+![](/day_4/li_pitch_intersectinf.PNG)
+
+
+Do Edit >> Text which opens up a dialogue box.Here you can define ports.
+
+![](/day_4/Naming_ports.PNG)
+
+
+Then go tcl/tk window of magic ,after selecting any port with the layer it is attached type what.There you can see everything like to what metal is connected and in what layer that port is present.Now the task is to define the class of the signal like inout,input or output and define function of the port like signal,ground or power.
+
+![](/day_4/lef_proc.PNG)
+
+
+Then extract lef file by `lef write` command
+
+![](/day_4/lef_write_command.PNG)
+
+
+LEF file
+
+![](/day_4/lef_file.PNG)
+
+
+Now go to files in vsdstdcelldesign folder ,here u can find lef file
+
+![](/day_4/files_vsdcelldesign.PNG)
+
+
+In `vsdstdcelldesign/libs` you can find three lib files.These lib files contains all information like power,delays and ports of all standard cells in particular format for three PVT corners(fast,slow and typical).
+
+![](/day_4/library_files.PNG)
+
+
+The view of fast lib file.Here the properties of our custum cell sky130_vsdinv can be found.Tools like yosis and opensta map our custom cell through this lib file only.
+
+![](/day_4/sky130_inv_libcell.PNG)
+
+
+Lookup tables are used inorder to characterize different properties like output delays,power,transition etc for different combinations of input slew and output capacitance.In below figure you can see characterization of rise transition and cell fall delay using 6x6 matrix where rows index represent input slew and column index represent output capacitance.STA tools use this information from lib file sor STA analysis.
+
+![](/day_4/lookup_tables.PNG)
+
+
+Now copy all the three lib files and lef file of our custom cell to src folder of picorv32a
+
+![](/day_4/files_to_be_copied_tosrc.PNG)
+
+
+Now in the config.ycl file of picorv32a specify loctaion of lib files and location of lef file as shown in figure.LIB_SYNTH variable is used by yosis to map sky130 pdk cells and LIB_TYPICAL,LIB_MAX and LIB_MIN are used by openSTA for static timing analysis.
+
+![](/day_4/Mod_config_lib_lef.PNG)
+
+
+After entering into openlane write two more commands as shown in figure below to include our custom lef file into merged.lef file.
+
+![](/day_4/merge_inv_lef.PNG)
+
+
+After running synthesis you can see our custom cell is included into synthesis file of picorv32a.
+
+![](/day_4/sky130_vsd_in_abc.PNG)
+
+
+STA hold time report of first synthesis run.We can see hold time is met.Hold slack time is positive.But it is too optimistic now as we hold time violations mostly can occur after clock tree synthesis.
+
+![](/day_4/setup_slack_run1.PNG)
+
+
+STA setup time report of first synthesis run.We can see setup slack is negative.Tns=1623 and wns=-15.96.A lot of modifications has to be done inorder to improve setup slack and bring it to zero.
+
+![](/day_4/tns_wns_run_1.PNG)
+
+
+We try to set SYNTH_STRATEGY variable to 1 which indicates that we want to prefer more faster response as compared to low area.So as result synthesis tool try to use more larger area cells or incoude buffers which has high drive strength but area and power increases.We set SYNTH_SIZING to 1 to indicate openlane to prefer sizing of cells as compared to including buffers.
+
+![](/day_4/setting_synth_strategy_1_inc_area_decr_time.PNG)
+
+
+After new slack run we can see tns and wns reduced.
+
+![](/day_4/new_slack_run2.PNG)
+
+
+Now we try to reduce MAX_FANOUT from 6 to 4.
+
+![](/day_4/FAN_OUT_UPDATE_4.PNG)
+
+
+After fanout change tns and wns further reduced.
+
+![](/day_4/new_slack_fanout_run_3.PNG)
+
+
+Now we try to open the picorv32a synthesis file in opensta software outside openlane do further chages.\
+We need a **configuration file** **<sta.conf>** which states the library locations and some initial conditions.\
+We need a **constraints file** **<my_base.sdc>** which is in sdc format followed by whole vlsi industry.\
+We need the **library files** and **synthesis file**.\
+
+
+**sta.conf** file
+
+![](/day_4/setting_up_sta_conf_address.PNG)
+
+
+
+**my_base.sdc** file.Here just we need to modify the clock port,set the driving cell and other design parameters.
+
+![](/day_4/base.sdc.PNG)
+
+
+Open sta.conf file in openSTA 
+
+![](/day_4/sta.conf_command.PNG)
+
+
+If we see the standard cells in critical path,we find that buffer of size 1 is driving a fanout of 4.
+
+![](/day_4/BUF_1_fanout_4.PNG)
+
+
+we find at net 13779 there is a buffer of size 1 driving four standard cells
+
+![](/day_4/reprt_net_sta.PNG)
+
+
+So we try to replace the buffer of size 1 at that net with buffer of size 4.It decreases the delay but increase the area and power consumption.Use the following command from image below.
+
+![](/day_4/commands_replace_report.PNG)
+
+
+Now tns and wns decreased from last run.
+
+![](/day_4/after_replacing_one_buf.PNG)
+
+
+We can find resultant cell is changed to buffer of size 4.
+
+![](/day_4/result_buff_4_change.PNG)
+
+
+Similarly after replacing two more buffers we can tns and wns again reduced.
+
+![](/day_4/run_5.PNG)
+
+
+Now write this new synthesis file after changing buffers to trial_run1 folder using the following command.
+
+![](/day_4/write_verilog.PNG)
+
+
+We can find chnaged buffers in picorv32a.synthesis file.
+
+![](/day_4/finding_43204_cell_in_syntheis.PNG)
+
+
+After this run_placement and check if placement is passed.
+
+![](/day_4/placement_check_final_run5.PNG)
+
+
+When you open picorv32a.placement.def file you can find the custom cell sky130_vsdinv
+
+![](/day_4/sky130_vsdinv_in_placement.PNG)
+
+
+Now we have do clock tree synthesis.Type  `run_cts`\
+After a new netlist will be formed with clock buffers inserted to reduce clock skew.
+
+![](/day_4/TRiton_netlist.PNG)
+
+
+You can find new synthesis file with clock buffers inserted in synthesis folder.
+
+![](/day_4/cts_synthesis.PNG)
+
+
+After synthesis you can find def generated after cts in tmp folder
+
+![](/day_4/current_def.PNG)
+
+
+Now enter the openroad interface to do sta analysis on new synthesis file after cts.
+type `openroad`.Here you need to gnerate .db files which requires lef and def files so use following commands.
+
+`read lef /location/merged.lef` 
+
+![](/day_4/reading_cts_lef.PNG)
+
+
+`read def /location/picorv32a.cts.def`
+
+![](/day_4/read_def_cts.PNG)
+
+
+After doing writing and reading of .db files we need to read synthesis file after cts,library files and  my_base.SDC constraints as shown in image.Then generate report to check STA analysis of picorv32.cts.synthesis.v file.The required commands to type are highlighted in yellow colour.
+
+![](/day_4/total_commands_cts.PNG)
+
+Setup time report.Setup slack is negative.
+
+![](/day_4/cts_setup_slack.PNG)
+
+hold time report.Hold slack is negative.
+
+![](/day_4/cts_hold_slack.PNG)
+
+Here the problem is we used min and max libraries for sta analysis but tritoncts currently can only do clock tree syntesis for typical corner.So we need to change library to typical.So we need to exit openroad and do the previous steps again and now include typical library.
+
+![](/day_4/typical_ts_sta.PNG)
+
+
+Setup report for typical library.Setup slack is reduced comparatively.
+
+![](/day_4/cts_typical_setup_slack.PNG)
+
+Hold reprt for typical library.Hold slack is reduced comparatively
+
+![](/day_4/typical_hold_cts_slack.PNG)
+
+Tritoncts tool always tries to use smallest size clock buffer inorder to minimize the skew.So we need to remove clock buffer of size 1 from the collection of cloack buffers so that tritoncts choses immediate next smalles buffer of size 2.For this use follwing TCL command.
+
+![](/day_4/CLK_1_BUF_REMOVED.PNG)
+
+Also again before we are doing clock tree synthesis we need to set CURRENT_DEF variable to placement def file as it was modified to cts def file due to previous cts run.
+
+![](/day_4/changing_current_def_to_placement.PNG)
+
+
+Setup slack report.Setup slack is positive now.
+
+![](/day_4/setup_slack_post_add_buf2.PNG)
+
+
+Hold slack report.Hold slack is positive now
+
+![](/day_4/hold_slack_post_add_buf2.PNG)
+
+
+To check hold and setup clock skew,use below commands.
+
+![](/day_4/setup_hold_skew.PNG)
+
+
+Inorder to add clock buffer of size 1 again in clock buffers list use following tcl command.
+
+![](/day_4/imp_comm.PNG)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
 
 
 
