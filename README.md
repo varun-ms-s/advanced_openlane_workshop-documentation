@@ -634,7 +634,7 @@ To check hold and setup clock skew,use below commands.
 
 Inorder to add clock buffer of size 1 again in clock buffers list use following tcl command.
 
-![](/day_4/imp_comm.PNG)
+![](/day_4/imp_comm.png)
 
 
 
