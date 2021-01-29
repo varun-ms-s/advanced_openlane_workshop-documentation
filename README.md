@@ -638,6 +638,93 @@ Inorder to add clock buffer of size 1 again in clock buffers list use following 
 
 
 
+## DAY-5
+
+### TASK
+
+To lay power distribution network and do the final routing using Fastroute for global routing nad tritonroute for detailed routing.
+
+### LAB
+
+To generate power distribution netwrok type `gen_pdn`
+
+![](/day_5/gen_pdn.PNG)
+
+The metal layers and pitch for each metal type used for power distribution
+
+![](/day_5/Metal_layers.PNG)
+
+
+Location of def file generated after power distribition .
+
+![](/day_5/pdn_loc.PNG)
+
+Power distribution view in magic.
+
+![](/day_5/after_powerdn_not_including_merge.PNG)
+
+Metal Layers description
+
+![](/day_5/pdn_label.PNG)
+
+1->metal 1(used to connect VDD nad ground of standard cells)
+2->metal 4(this gets power or ground from metal 5 stripe and passes the power or ground to metal 1)
+3->matal 5(this is the main strip which carries power and ground and distributes around the core to metal 4)
+4->metal 4 and metal 1 contact
+5->metal 5 and metal 4 contact
+
+
+
+We always need to have standard cell with height of multiple of metal 1 pitch then only vdd and ground of each standard cell can be properly routed.
+
+![](/day_5/Pitch_of_metal1_2.7.PNG)
+
+
+Now do routing by using command `run_routing`
+You can see tritonroute does several optimisations to get best possible routing
+
+![](/day_5/7th_optimisation.PNG)
+
+Routing pass
+
+![](/day_5/completed_routing.PNG)
+
+You can view the final route in magic
+
+![](/day_5/Final_rout_1.PNG)
+
+You can find custom inverter cell in final routing
+
+![](/day_5/Inkedinv_connections_LI.PNG)
+
+Finally to get .gds file type `run_magic`
+
+
+## ACKNOLEDGEMENT
+
+**Kunal Ghosh**,Co founder and director
+**Nickson Jose**,Teaching Assistant VSD
+**Praharsha**, Teaching Assistant VSD
+**Advaitha Radhika**,Teaching Assistant VSD
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
