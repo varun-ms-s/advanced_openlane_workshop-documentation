@@ -697,7 +697,7 @@ Finally to get .gds file type `run_magic`
 **Kunal Ghosh**,Co-founder (VSD Corp. Pvt. Ltd)\
 **Nickson Jose**,Teaching Assistant VSD\
 **Praharsha**, Teaching Assistant VSD\
-**Advaitha Radhika**,Teaching Assistant VSD\
+**Akurathi Radhika**,Teaching Assistant VSD\
 
 
 
