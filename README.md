@@ -692,7 +692,7 @@ You can view the final route in magic
 
 You can find custom inverter cell in final routing
 
-![](/day_5/Inkedinv_connections_LI.PNG)
+![](day_5/Inkedinv_connections_LI.jpg)
 
 Finally to get .gds file type `run_magic`
 
