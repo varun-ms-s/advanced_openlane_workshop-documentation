@@ -659,10 +659,10 @@ Metal Layers description
 
 ![](/day_5/pdn_label.PNG)
 
-1->metal 1(used to connect VDD nad ground of standard cells)
-2->metal 4(this gets power or ground from metal 5 stripe and passes the power or ground to metal 1)
-3->matal 5(this is the main strip which carries power and ground and distributes around the core to metal 4)
-4->metal 4 and metal 1 contact
+1->metal 1(used to connect VDD nad ground of standard cells)\
+2->metal 4(this gets power or ground from metal 5 stripe and passes the power or ground to metal 1)\
+3->matal 5(this is the main strip which carries power and ground and distributes around the core to metal 4)\
+4->metal 4 and metal 1 contact\
 5->metal 5 and metal 4 contact
 
 
@@ -697,7 +697,7 @@ Finally to get .gds file type `run_magic`
 **Kunal Ghosh**,Co-founder (VSD Corp. Pvt. Ltd)\
 **Nickson Jose**,Teaching Assistant VSD\
 **Praharsha**, Teaching Assistant VSD\
-**Akurathi Radhika**,Teaching Assistant VSD\
+**Akurathi Radhika**,Teaching Assistant VSD
 
 
 
