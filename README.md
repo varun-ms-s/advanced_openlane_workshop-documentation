@@ -31,17 +31,15 @@ To learn about skywater PDK and implement synthesis stage in openlane.
 
 ![](day_1/openlane_in_1.PNG)
 
-1.Go to openlane flow directory\
+Go to openlane flow directory\
  Desktop/work/tools/openlane_working_directory/openlane_flow\
-2.Type\
-`./flow.tcl -interactive`\
-3.Now you will enter to open lane flow and type\
-`package require openlane 0.9`
+Type `./flow.tcl -interactive`\
+Now you will enter to open lane flow and type `package require openlane 0.9`
 
 ![](day_1/day1_prep_pico.PNG)
 
-4.Pass your design into openflow\
- `prep -design picorv32a` \
+Pass your design into openflow\
+`prep -design picorv32a` \
 -design ->pass the design folder name where you stored your input files to openlane
 
 
@@ -50,7 +48,7 @@ To learn about skywater PDK and implement synthesis stage in openlane.
 ![](day_1/day1_prep_pico_complete.PNG)
 Now openlane basically merges the lef file and technology file and forms a merged file called merged.lef\
 
-5.We are passing picorv32a design into openlane.We can find picorv32a folder in design directory.\
+We are passing picorv32a design into openlane.We can find picorv32a folder in design directory.\
 There the verilog input files are stored in src folder.\
 Config.tcl is used to set all variables with desired values for openlane flow.\
 Runs directory stores all the  run instances.By default run instance name is particular time and date of run.
@@ -63,8 +61,7 @@ Config.tcl has parameters like clock_period,target_density which can be set to d
 
 ![](day_1/config_in_1.PNG)
 
-6.Type \
-`run_synthesis` \
+Type `run_synthesis` \
 you will be able to see netlist formed by yosis and abc maps that netlist to skywater pdk cells.\
 A yosis reprt will be generated which contains all information of cells used in syntheis file .
 
